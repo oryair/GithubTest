@@ -85,53 +85,53 @@ end
 end
 
 
-function [ outputPx ] = NonLocaPatchFilter( mSearchWindowPatches, refPixelRowIdx, refPixelColIdx, vWeighingKernel, weightsStd )
-% ----------------------------------------------------------------------------------------------- %
-% [ outputPx ] = NonLocaPatchFilter( mSearchWindow, localWinRadius, vWeighingKernel, weightStd )
-%   Applies the Non Local Means Filter on the Input Search Window per Local Window
-% Input:
-%   - mSearchWindow         -   Input Pixel.
-%                               Matrix, 1 Channels, Floating Point, [0, 1]
-%   - localWinRadius        -   Local Window Radius.
-%                               Scalar, Floating Point, {1, 2, ..., 10}.
-%   - vWeighingKernel       -   Local Window Gaussian Kernel.
-%                               Vector, Floating Point (0, inf)
-%   - weightStd             -   Weights STD Factor.
-%                               Scalar, Floating Point [0.1, 20].
-% Output:
-%   - outputPx              -   Output Pixel.
-%                               Scalar, Floating Point, [0, 1]
-% Remarks:
-%   1.  Prefixes:
-%       -   'm' - Matrix.
-%       -   'v' - Vector.
-%   2.  Classic implemntation by ''.
-%   3.  Inve
-% TODO:
-%   1.  Implement `im2col` manually.
-%   Release Notes:
-%   -   1.0.000     22/08/2014  Royi Avital
-%       *   First release version.
-% ----------------------------------------------------------------------------------------------- %
-
-FALSE   = 0;
-TRUE    = 1;
-OFF     = 0;
-ON      = 1;
-
-vRefPatch = mSearchWindowPatches(:, refPixelColIdx);
-
-vWeightedPacthDistnace = bsxfun(@minus, mSearchWindowPatches, vRefPatch);
-vWeightedPacthDistnace = bsxfun(@times, vWeightedPacthDistnace, vWeighingKernel);
-% vWeightedPacthDistnacea = sum([vWeightedPacthDistnace .^ 2]);
-vWeightedPacthDistnace = sum([vWeightedPacthDistnace .* vWeightedPacthDistnace]);
-vWeightedPacthDistnace = exp(-vWeightedPacthDistnace / (weightsStd * weightsStd));
-
-% Cancelling the reference pixel
-vWeightedPacthDistnace(refPixelColIdx) = 0;
-
-outputPx = sum(vWeightedPacthDistnace .* mSearchWindowPatches(refPixelRowIdx, :)) ./ sum(vWeightedPacthDistnace);
-
-
-end
-
+% % % % % % function [ outputPx ] = NonLocaPatchFilter( mSearchWindowPatches, refPixelRowIdx, refPixelColIdx, vWeighingKernel, weightsStd )
+% % % % % % % ----------------------------------------------------------------------------------------------- %
+% % % % % % % [ outputPx ] = NonLocaPatchFilter( mSearchWindow, localWinRadius, vWeighingKernel, weightStd )
+% % % % % % %   Applies the Non Local Means Filter on the Input Search Window per Local Window
+% % % % % % % Input:
+% % % % % % %   - mSearchWindow         -   Input Pixel.
+% % % % % % %                               Matrix, 1 Channels, Floating Point, [0, 1]
+% % % % % % %   - localWinRadius        -   Local Window Radius.
+% % % % % % %                               Scalar, Floating Point, {1, 2, ..., 10}.
+% % % % % % %   - vWeighingKernel       -   Local Window Gaussian Kernel.
+% % % % % % %                               Vector, Floating Point (0, inf)
+% % % % % % %   - weightStd             -   Weights STD Factor.
+% % % % % % %                               Scalar, Floating Point [0.1, 20].
+% % % % % % % Output:
+% % % % % % %   - outputPx              -   Output Pixel.
+% % % % % % %                               Scalar, Floating Point, [0, 1]
+% % % % % % % Remarks:
+% % % % % % %   1.  Prefixes:
+% % % % % % %       -   'm' - Matrix.
+% % % % % % %       -   'v' - Vector.
+% % % % % % %   2.  Classic implemntation by ''.
+% % % % % % %   3.  Inve
+% % % % % % % TODO:
+% % % % % % %   1.  Implement `im2col` manually.
+% % % % % % %   Release Notes:
+% % % % % % %   -   1.0.000     22/08/2014  Royi Avital
+% % % % % % %       *   First release version.
+% % % % % % % ----------------------------------------------------------------------------------------------- %
+% % % % % % 
+% % % % % % FALSE   = 0;
+% % % % % % TRUE    = 1;
+% % % % % % OFF     = 0;
+% % % % % % ON      = 1;
+% % % % % % 
+% % % % % % vRefPatch = mSearchWindowPatches(:, refPixelColIdx);
+% % % % % % 
+% % % % % % vWeightedPacthDistnace = bsxfun(@minus, mSearchWindowPatches, vRefPatch);
+% % % % % % vWeightedPacthDistnace = bsxfun(@times, vWeightedPacthDistnace, vWeighingKernel);
+% % % % % % % vWeightedPacthDistnacea = sum([vWeightedPacthDistnace .^ 2]);
+% % % % % % vWeightedPacthDistnace = sum([vWeightedPacthDistnace .* vWeightedPacthDistnace]);
+% % % % % % vWeightedPacthDistnace = exp(-vWeightedPacthDistnace / (weightsStd * weightsStd));
+% % % % % % 
+% % % % % % % Cancelling the reference pixel
+% % % % % % vWeightedPacthDistnace(refPixelColIdx) = 0;
+% % % % % % 
+% % % % % % outputPx = sum(vWeightedPacthDistnace .* mSearchWindowPatches(refPixelRowIdx, :)) ./ sum(vWeightedPacthDistnace);
+% % % % % % 
+% % % % % % 
+% % % % % % end
+AAAAAAAAAAAAAAAAAAAAAAAAAAA
